@@ -1,32 +1,41 @@
 var boundary = {
-  x:300,
-  y:300
+  x: 200,
+  y: 200
 };
 
-var ballDimensions = {
-  y :0,
-  width:50,
-  height:50
+var ballProps = {
+  y: 0,
+  width: 50,
+  height: 50,
 }
-
-var container = document.getElementById('container');
-
-container.style.width = boundary.x + 'px';
-container.style.height = boundary.y + 'px';
 
 var ball = document.createElement('div');
-ball.style.width = ballDimensions.width + 'px';
-ball.style.height = ballDimensions.height + 'px';
+ball.style.borderRadius = '50%';
+ball.style.width = ballProps.width + 'px';
+ball.style.height = ballProps.height + 'px';
 ball.style.background = '#49c';
-ball.style.borderRadius = 30 + 'px'
-ball.style.position = 'absolute';
 
+var container = document.getElementById('container');
 container.appendChild(ball);
 
-function movement() {
-  ballDimensions.
+ball.style.position = 'absolute';
+ball.style.left = 'calc(50% - ' + ballProps.width / 2 + 'px)';
+
+var speed = 1;
+var delta = 1;
+
+function moveBall() {
+  ballProps.y += speed * delta;
+  
+  ball.style.top = ballProps.y + 'px';
+  
+  if (ballProps.y < 0) {
+    delta = 1;
+  }
+  
+  if (ballProps.y + ballProps.height > boundary.y) {
+    delta = -1;
+  }
 }
 
-
-
-
+setInterval(moveBall);
