@@ -1,8 +1,8 @@
 const ballMinSize = 15;
 const ballMaxSize = 40;
-var directionArray = [-1, 1];
+//var radius;
 var balls = [];
-const speed = 10;
+const speed = 1;
 
 const CONTAINER_WIDTH = 700;
 const CONTAINER_HEIGHT = 500;
@@ -51,19 +51,59 @@ function Ball(x, y, ballRadius, color, ballDirectionX, ballDirectionY, parent) {
         this.element.style.backgroundColor = this.color;
     }
 
+    this.collisionDetection = function() {
+        for (let i = 0; i < balls.length; i++) {
+            if (balls[i] == this) {
+                continue;
+            }
+            var xc1 = this.x;
+            var yc1 = this.y;
+            var xc2 = balls[i].x;
+            var yc2 = balls[i].y;
+            var radius1 = this.ballRadius;
+            var radius2 = balls[i].ballRadius;
+            var dx = xc1 - xc2;
+            var dy = yc1 - yc2;
+            var distance = Math.sqrt(dx * dx + dy * dy);
+            //console.log(dx, dy, radius1, radius2, distance);
+
+
+
+            if (distance <= (radius1 + radius2)) {
+                //console.log('Before', this.ballDirectionX, balls[i].ballDirectionX);
+                this.ballDirectionX = -this.ballDirectionX;
+                balls[i].ballDirectionX = -balls[i].ballDirectionX;
+                this.ballDirectionY = -this.ballDirectionY;
+                balls[i].ballDirectionY = -balls[i].ballDirectionY;
+                //console.log('After', this.ballDirectionX, balls[i].ballDirectionX)
+            }
+        }
+    }
+
 
     this.update = function() {
-        this.x = this.x + speed * this.ballDirectionX / 10;
-        this.y = this.y + speed * this.ballDirectionY / 10;
+        if (this.ballDirectionX === 0 && this.ballDirectionY === 0) {
+            this.ballDirectionX = 1
+            this.x = this.x + speed * this.ballDirectionX;
+            this.y = this.y + speed * this.ballDirectionY;
+        } else {
+            this.x = this.x + speed * this.ballDirectionX;
+            this.y = this.y + speed * this.ballDirectionY;
+        }
     }
 
     this.reverseUpdate = function() {
         this.ballDirectionX = -this.ballDirectionX;
         this.ballDirectionY = -this.ballDirectionY;
 
-        this.x = this.x + speed * this.ballDirectionX / 10;
-        this.y = this.y + speed * this.ballDirectionY / 10;
-
+        if (this.ballDirectionX === 0 && this.ballDirectionY === 0) {
+            this.ballDirectionX = -1
+            this.x = this.x + speed * this.ballDirectionX;
+            this.y = this.y + speed * this.ballDirectionY;
+        } else {
+            this.x = this.x + speed * this.ballDirectionX;
+            this.y = this.y + speed * this.ballDirectionY;
+        }
     }
 
 }
@@ -75,8 +115,8 @@ function Game(ballNum) {
         var containerDiv = document.getElementById('container');
 
         for (var i = 1; i <= ballNum; i++) {
-            var directionX = directionArray[Math.floor((Math.random() * 2))];
-            var directionY = directionArray[Math.floor((Math.random() * 2))];
+            var directionX = generateRandom(-1, 1);
+            var directionY = generateRandom(-1, 1);
             var randomX = getRandomInt(0, BALL_CONSTRAINT_X - 50);
             var randomY = getRandomInt(0, BALL_CONSTRAINT_Y - 50);
             var randomColor = getRandomColor();
@@ -87,14 +127,12 @@ function Game(ballNum) {
             balls.push(ball);
         }
 
-        gameInterval = setInterval(this.move, 10);
+        gameInterval = setInterval(this.move, 20);
     }
 
 
     this.move = function() {
         balls.forEach(function(ball) {
-
-            //this loop checks collision of balls
             for (let i = 0; i < balls.length; i++) {
                 if (balls[i] == ball) {
                     continue;
@@ -113,16 +151,17 @@ function Game(ballNum) {
 
 
                 if (distance <= (radius1 + radius2)) {
+                    //console.log('Before', this.ballDirectionX, balls[i].ballDirectionX);
                     this.ballDirectionX = -this.ballDirectionX;
                     balls[i].ballDirectionX = -balls[i].ballDirectionX;
                     this.ballDirectionY = -this.ballDirectionY;
                     balls[i].ballDirectionY = -balls[i].ballDirectionY;
+                    //console.log('After', this.ballDirectionX, balls[i].ballDirectionX)
                 } else {
                     continue;
                 }
             }
 
-            //these conditions check boundary collision
             if (ball.x + ball.ballRadius * 2 >= parseInt(CONTAINER_WIDTH) || ball.x < 0 ||
                 ball.y + ball.ballRadius * 2 >= parseInt(CONTAINER_HEIGHT) || ball.y < 0) {
                 ball.reverseUpdate();
@@ -135,4 +174,4 @@ function Game(ballNum) {
     }
 }
 
-new Game(10).init();
+new Game(20).init();
