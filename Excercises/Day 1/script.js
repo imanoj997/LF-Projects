@@ -71,52 +71,52 @@ console.log(output);
 
 console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-console.log("Assignment 4: Normalization")
+console.log("Assignment-4: Normalization")
 
-// var people = [{
-//     id: 1,
-//     name: "Aegon Targaryen",
-//     children: [{
-//         id: 2,
-//         name: "Jaehaerys Targaryen",
-//         children: [{
-//             id: 4,
-//             name: "Daenerys Targaryen"
-//         }, {
-//             id: 5,
-//             name: "Rhaegar Targaryen",
-//             children: [{
-//                 id: 6,
-//                 name: "Aegon Targaryen"
-//             }]
-//         }]
-//     }, {
-//         id: 3,
-//         name: "Rhaelle Targaryen"
-//     }],
-// }];
+var people = [{
+    id: 1,
+    name: "Aegon Targaryen",
+    children: [{
+        id: 2,
+        name: "Jaehaerys Targaryen",
+        children: [{
+            id: 4,
+            name: "Daenerys Targaryen"
+        }, {
+            id: 5,
+            name: "Rhaegar Targaryen",
+            children: [{
+                id: 6,
+                name: "Aegon Targaryen"
+            }]
+        }]
+    }, {
+        id: 3,
+        name: "Rhaelle Targaryen"
+    }],
+}];
 
-// var output = [];
-// var person = {};
-// function normalize(object) {
-//     for (var index = 0; index < object.length; index++) {
-//         person = {
-//             id: object[index].id,
-//             name: object[index].name,
-//             children: []
-//         }
-//         if (object[index].children === undefined) {
-//             output.push(person);
-//             return;
-//         }
-//         for (var j = 0; j < object[index].children.length; j++) {
-//             (person.children).push(object[index].children[j].id);
-//         }
-//         output.push(person);
-//         object = object[index].children;
-//         normalize(object);
-//     }
-// }
-// normalize(people);
-// console.log(output)
+var output = [];
+var person = {};
+function normalization(object) {
+    for (var index = 0; index < object.length; index++) {
+        person = {
+            id: object[index].id,
+            name: object[index].name,
+            children: []
+        }
+        if (object[index].children === undefined) {
+            output.push(person);
+            return;
+        }
+        for (var j = 0; j < object[index].children.length; j++) {
+            (person.children).push(object[index].children[j].id);
+        }
+        output.push(person);
+        object = object[index].children;
+        normalization(object);
+    }
+}
+normalization(people);
+console.log(output)
 
