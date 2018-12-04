@@ -18,19 +18,32 @@ function init() {
     imageNumber = liItems.length;
     imageWidth = liItems[0].children[0].clientWidth;
     ul.style.width = parseInt(imageWidth * imageNumber) + 'px';
-    slider(ul);
-    prev.onclick = function () {
+    //slider(ul);
+    prev.onclick = function() {
         onClickPrev();
-        clearInterval(id);
-        // var btnClicked = true;
-        // slider = null;
+        //clearInterval(id);
+        var btnClicked = true;
+        //slider = new slider();
     };
-    next.onclick = function () {
+    next.onclick = function() {
         onClickNext();
-        //var btnClicked = true;
-        //slider = null;
-    };
-    ;
+        var btnClicked = true;
+        //slider = new slider();
+    };;
+    setInterval(function (){
+
+        if(btnClicked == false){
+            if (currentImage == 0) {
+            slideTo(currentImage + 1);
+            } else if(currentImage == imageNumber-1){
+            slideTo(currentImage -(imageNumber-1));
+            }else{
+                slideTo(currentImage + 1)
+            }
+        }else{
+            return;
+        }
+    }, 3000);
 }
 
 function slideTo(imageToGo) {
@@ -54,21 +67,21 @@ function slideTo(imageToGo) {
     animate(opts);
 }
 
-function goBack(leftPosition) {
-    currentImage = 0;
-    var id = setInterval(function () {
-        if (leftPosition >= 0) {
-            ul.style.left = '-' + parseInt(leftPosition) + 'px';
-            leftPosition -= imageWidth / 10;
-        } else {
-            clearInterval(id);
-        }
-    }, 17);
-}
+// function goBack(leftPosition) {
+//     currentImage = 0;
+//     var id = setInterval(function() {
+//         if (leftPosition >= 0) {
+//             ul.style.left = '-' + parseInt(leftPosition) + 'px';
+//             leftPosition -= imageWidth / 10;
+//         } else {
+//             clearInterval(animate.id);
+//         }
+//     }, 17);
+// }
 
 function animate(opts) {
     var start = new Date();
-    var id = setInterval(function () {
+    var id = setInterval(function() {
         var timePassed = new Date() - start;
         var progress = timePassed / opts.duration;
         if (progress > 1) {
@@ -84,18 +97,18 @@ function animate(opts) {
 }
 
 function onClickPrev() {
-    slide = null;
+    //slide = null;
     if (currentImage == 0) {
-        //btnClicked=false;
+        btnClicked=false;
         return;
     } else {
         slideTo(currentImage - 1);
-        //btnClicked = false;
+        btnClicked = false;
     }
 }
 
 function onClickNext() {
-    slide = null;
+    //slide = null;
     if (currentImage == imageNumber - 1) {
         btnClicked = false;
         return;
@@ -105,33 +118,28 @@ function onClickNext() {
     }
 }
 
-function slider(ul) {
-    animate({
-        duration: 3000,
-        delta: function delta(p) {
-            return Math.max(0, -1 + 2 * p);
-        },
-        step: function step(delta) {
-            ul.style.left = '-' + parseInt(currentImage * imageWidth + delta * imageWidth) + 'px';
-        },
-        callback: function callback() {
-            currentImage++;
-            if (currentImage < imageNumber - 1) {
-                slider(ul);
-            } else {
-                var leftPosition = (imageNumber - 1) * imageWidth;
-                setTimeout(function () {
-                    goBack(leftPosition);
-                }, 3000);
-                setTimeout(function () {
-                    slider(ul);
-                }, 3000);
-            }
-        }
-    });
-}
-
-
-
-
-
+// function slider(ul) {
+//     animate({
+//         duration: 3000,
+//         delta: function delta(p) {
+//             return Math.max(0, -1 + 2 * p);
+//         },
+//         step: function step(delta) {
+//             ul.style.left = '-' + parseInt(currentImage * imageWidth + delta * imageWidth) + 'px';
+//         },
+//         callback: function callback() {
+//             currentImage++;
+//             if (currentImage < imageNumber - 1) {
+//                 slider(ul);
+//             } else {
+//                 var leftPosition = (imageNumber - 1) * imageWidth;
+//                 setTimeout(function() {
+//                     goBack(leftPosition);
+//                 }, 3000);
+//                 setTimeout(function() {
+//                     slider(ul);
+//                 }, 3000);
+//             }
+//         }
+//     });
+// }
