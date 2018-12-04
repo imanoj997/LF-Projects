@@ -1,0 +1,10 @@
+#canvas {
+    width: 900px;
+    height: 504px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    left: 20%;
+    background: url("../images/bg.png");
+    border: 3px solid red;
+}
