@@ -4,6 +4,9 @@ var welcome = document.createElement('div');
 scoreCard.className += 'scorecard';
 
 
+wrapper.style.background = "url('images/background.png') no-repeat";
+
+
 wrapper.appendChild(scoreCard);
 
 var wrapperWidth = 1000;
