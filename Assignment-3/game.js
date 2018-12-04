@@ -1,125 +1,31 @@
 var wrapper = document.getElementById('wrapper');
+var scoreCard = document.createElement('span');
+var welcome = document.createElement('div');
+scoreCard.className += 'scorecard';
 
-var wrapperWidth = 1350;
-var wrapperHeight = 756;
 
-var pressed = false;
-var pipeCounter = 0;
+wrapper.appendChild(scoreCard);
+
+var wrapperWidth = 1000;
+var wrapperHeight = 560;
+
+var verticalGap;
+var horizentalGap;
+var gravity = 1;
 var score = 0;
 var highScore = 0;
-
-
-var pipeHeight = Math.ceil(Math.random() * (wrapperHeight - 100));
+var keyPress = false;
+var poleHeight;
+var timeCount = 0;
+var start = false;
 
 wrapper.style.width = wrapperWidth + 'px';
 wrapper.style.height = wrapperHeight + 'px';
 
-function Game() {
-    var bird = new Bird();
-    bird.draw()
-    bird.move();
-
-    pipeArray = new PipeList();
-
-    var pipe = new Pipe();
-
-    var initializeGame = setInterval(function() {
-
-        var collision = bird.checkCollision(pipeArray.getAll());
-        if (collision) {
-
-            if (score > highScore) {
-                highScore = score;
-                localStorage.setItem('highScore', highScore);
-            }
-
-            var gameOver = document.createElement('div');
-            gameOver.style.height = '300px';
-            gameOver.style.width = '600px';
-            gameOver.style.position - 'absolute';
-            gameOver.style.top = '50%';
-            gameOver.style.margin = 'auto';
-            gameOver.style.padding = '20px 0 20px 20px';
-            gameOver.style.textAlign = 'center';
-            gameOver.style.fontSize = '30px';
-            gameOver.style.background = 'yellow';
-            gameOver.style.opacity = '0.5';
-
-            var Heading = document.createElement('h1');
-            Heading.textContent = '!!! GAME OVER !!!';
-
-            var scoreHeading = document.createElement('h2');
-            scoreHeading.textContent = "Your Score: " + score;
-
-            var highScoreHeading = document.createElement('h3');
-            highScoreHeading.textContent = "High Score: " + localStorage.getItem('highScore');
-
-            gameOver.appendChild(Heading);
-            gameOver.appendChild(scoreHeading);
-            gameOver.appendChild(highScoreHeading);
-
-            wrapper.appendChild(gameOver);
-            clearInterval(initializeGame);
-        } else {
-
-            bird.move();
-
-            pipeHeight = Math.ceil(Math.random() * (wrapperHeight - 100));
-            if (pipeCounter % 500 == 0) {
-                var pipe = new Pipe(pipeHeight, true);
-                pipe.draw();
-                pipeArray.add(pipe);
-
-                var pipe2 = new Pipe(wrapperHeight - (pipeHeight + 100), false);
-                pipe2.draw();
-                pipeArray.add(pipe2);
-            }
-
-
-            for (var i = 0; i < pipeArray.getAll().length; i++) {
-                pipeArray.getAll()[i].move();
-                if (i % 2 == 1) {
-                    if (pipeArray.getAll()[i].startPoint + pipeArray.getAll()[i].width == bird.x) {
-                        score++;
-                        welcome.textContent = 'score:' + score;
-                        console.log('score:' + score);
-                    }
-                }
-
-                if (pipeArray.getAll()[i].startPoint == 0) {
-                    pipeArray.remove();
-
-                }
-            }
-
-
-            document.addEventListener('keydown', function() {
-                pressed = true;
-            });
-
-            document.addEventListener('keyup', function() {
-                pressed = false;
-            });
-
-            if (pressed == true) {
-                bird.changeDirection(-bird.dy);
-            } else {
-                bird.changeDirection(bird.dy * 3);
-            }
-
-            pipeCounter++;
-
-        }
-    }, 1000);
-
-
-}
-
-function Bird(d) {
-    var that = this;
-    this.x = 350;
+function Bird() {
+    this.x = 300;
     this.y = 300;
-    this.dy = 1;
+    this.gravity = gravity;
     this.height = 30;
     this.width = 30;
     var bird = document.createElement('div');
@@ -139,38 +45,39 @@ function Bird(d) {
 
     this.move = function() {
 
-        bird.style.top = that.y + 'px';
+        bird.style.top = this.y + 'px';
+
     }
 
-    this.changeDirection = function(dy) {
+    this.birdUpDown = function(gravity) {
 
-        that.y += dy;
+        this.y += gravity;
     }
 
-    this.checkCollision = function(pipeList) {
+    this.checkCollision = function(poleList) {
 
-        for (var i = 0; i < pipeList.length; i++) {
+        for (var i = 0; i < poleList.length; i++) {
 
-            var pipeX = pipeList[i].startPoint;
-            var pipeY = 0;
-            if (!pipeList[i].appearFromTop) {
-                pipeY = wrapperHeight - pipeList[i].height;
+            var poleLeft = poleList[i].startPoint;
+            var poleTop = 0;
+            if (!poleList[i].upperpole) {
+                poleTop = wrapperHeight - poleList[i].height;
             }
-            var pipeWidth = pipeList[i].width;
-            var pipeHeight = pipeList[i].height;
+            var poleWidth = poleList[i].width;
+            var poleHeight = poleList[i].height;
 
-            var birdX = that.x;
-            var birdY = that.y;
-            var birdWIdth = that.width;
-            var birdHeight = that.height;
+            var birdLeft = this.x;
+            var birdTop = this.y;
+            var birdWIdth = this.width;
+            var birdHeight = this.height;
 
-            if (birdX < pipeX + pipeWidth && birdX + birdWIdth > pipeX &&
-                birdY < pipeY + pipeHeight && birdY + birdHeight > pipeY) {
+            if (birdLeft < poleLeft + poleWidth && birdLeft + birdWIdth > poleLeft &&
+                birdTop < poleTop + poleHeight && birdTop + birdHeight > poleTop) {
                 return true;
             }
         }
 
-        if (birdY < 0 || birdY + birdHeight > wrapperHeight) {
+        if (birdTop < 0 || birdTop + birdHeight > wrapperHeight) {
             return true;
         }
 
@@ -181,75 +88,206 @@ function Bird(d) {
 
 
 
-function Pipe(height, appearFromTop) {
-    this.startPoint = parseInt(wrapper.style.width);
+function Pole(height, upperpole) {
+    this.startPoint = parseInt(wrapperWidth - 200);
 
     this.x = this.startPoint;
     this.width = 50;
     this.height = height;
-    this.appearFromTop = appearFromTop;
+    this.upperpole = upperpole;
 
-    var pipe = document.createElement('div');
-
-
-
+    var pole = document.createElement('div');
 
     this.draw = function() {
 
-        pipe.style.width = this.width + 'px';
-        pipe.style.height = this.height + 'px';
-        pipe.style.background = '#86c656';
-        pipe.style.position = 'absolute';
-        pipe.style.left = this.startPoint;
-        if (this.appearFromTop == true) {
-            pipe.style.top = '0px';
-            pipe.style.borderBottom = '5px solid black';
+        pole.style.width = this.width + 'px';
+        pole.style.height = this.height + 'px';
+        pole.style.background = '#86c656';
+        pole.style.position = 'absolute';
+        pole.style.left = this.startPoint;
+        if (this.upperpole == true) {
+            pole.style.top = '0px';
+            pole.style.borderBottomWidth = 100 + 'px';
+            pole.style.borderBottom = '5px solid red';
         } else {
 
-            pipe.style.bottom = '0px';
-            pipe.style.borderTop = '5px solid black';
+            pole.style.bottom = '0px';
+            pole.style.borderTopWidth = 100 + 'px';
+            pole.style.borderTop = '5px solid red';
 
         }
 
-
-
-        wrapper.appendChild(pipe);
+        wrapper.appendChild(pole);
     }
 
     this.move = function() {
-        pipe.style.left = this.startPoint + 'px';
+        pole.style.left = this.startPoint + 'px';
         this.startPoint -= 1;
     }
 
     this.getElement = function() {
-        return pipe;
+        return pole;
     }
-
-
 }
 
 
+function poleList() {
+    this.poleArray = [];
 
-
-function PipeList() {
-    this.pipeArray = [];
-
-    this.add = function(pipe) {
-        this.pipeArray.push(pipe);
+    this.add = function(pole) {
+        this.poleArray.push(pole);
     }
 
     this.remove = function() {
         for (var i = 0; i < 2; i++) {
-            wrapper.removeChild(this.pipeArray[0].getElement());
-            this.pipeArray.splice(0, 1);
+            wrapper.removeChild(this.poleArray[0].getElement());
+            this.poleArray.splice(0, 1);
         }
     }
 
     this.getAll = function() {
-        return this.pipeArray;
+        return this.poleArray;
     }
 }
 
+function Game() {
+    welcome.remove();
+    var bird = new Bird();
+    bird.draw()
+    bird.move();
+
+    poleArray = new poleList();
+
+    var pole = new Pole();
+
+    var init = setInterval(function() {
+
+        var collision = bird.checkCollision(poleArray.getAll());
+        if (collision) {
+
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('highScore', highScore);
+            }
+            gameOver();
+            var gameOverAudio = document.getElementById('gameoveraudio');
+            gameOverAudio.play();
+            clearInterval(init);
+        } else {
+
+            bird.move();
+
+            if (score < 7) {
+                poleHeight = Math.ceil(Math.random() * (wrapperHeight - 250));
+                verticalGap = 120;
+                horizentalGap = 300;
+            } else if (score >= 7 && score < 15) {
+                poleHeight = Math.ceil(Math.random() * (wrapperHeight - 150));
+                verticalGap = 90;
+                horizentalGap = 230;
+            } else {
+                poleHeight = Math.ceil(Math.random() * (wrapperHeight - 75));
+                verticalGap = 90;
+                horizentalGap = 150;
+            }
+
+            if (timeCount % horizentalGap == 0) {
+                var poleTop = new Pole(poleHeight, true);
+                poleTop.draw();
+                poleArray.add(poleTop);
+
+                var poleBottom = new Pole(wrapperHeight - (poleHeight + verticalGap), false);
+                poleBottom.draw();
+                poleArray.add(poleBottom);
+            }
 
 
-window.onload = Game();
+            for (var i = 0; i < poleArray.getAll().length; i++) {
+                poleArray.getAll()[i].move();
+                if (i % 2 == 1) {
+                    if (poleArray.getAll()[i].startPoint + poleArray.getAll()[i].width == bird.x) {
+                        score++;
+                        scoreCard.textContent = 'Score:' + score;
+                        var scoreAudio = document.createElement('scoreplus');
+                        scoreAudio.play();
+                    }
+                }
+
+                if (poleArray.getAll()[i].startPoint == 0) {
+                    poleArray.remove();
+
+                }
+            }
+
+
+            document.addEventListener('keydown', function() {
+                keyPress = true;
+            });
+
+            document.addEventListener('keyup', function() {
+                keyPress = false;
+            });
+
+            if (keyPress == true) {
+                var flyAudio = document.getElementById('fly');
+                flyAudio.play();
+                bird.birdUpDown(-bird.gravity * 2);
+            } else {
+                bird.birdUpDown(bird.gravity * 1.5);
+            }
+
+            timeCount++;
+
+        }
+    }, 10);
+}
+
+function gameOver() {
+    var gameOver = document.createElement('div');
+    gameOver.className += 'gameover';
+
+    var Heading = document.createElement('h1');
+    Heading.textContent = 'GAME OVER';
+
+    var scoreBoard = document.createElement('h2');
+    scoreBoard.textContent = "Your Score: " + score;
+
+    var highscoreBoard = document.createElement('h2');
+    highscoreBoard.textContent = "High Score: " + localStorage.getItem('highScore');
+
+    gameOver.appendChild(Heading);
+    gameOver.appendChild(scoreBoard);
+    gameOver.appendChild(highscoreBoard);
+
+    wrapper.appendChild(gameOver);
+}
+
+function welcomeScreen() {
+    welcome.className += 'welcome';
+
+    var welcomeText = document.createElement('h2');
+    welcomeText.textContent = 'WELCOME';
+
+    var gameName = document.createElement('h1');
+    gameName.textContent = "Flappy Bird";
+
+    var highscoreBoard = document.createElement('h2');
+    highscoreBoard.textContent = "High Score: " + localStorage.getItem('highScore');
+
+    welcome.appendChild(welcomeText);
+    welcome.appendChild(gameName);
+    welcome.appendChild(highscoreBoard);
+
+    wrapper.appendChild(welcome);
+}
+
+function startGame() {
+    welcomeScreen();
+    setTimeout(function() {
+        welcome.style.display = 'none';
+        Game();
+    }, 1000);
+
+}
+
+window.onload = startGame();
