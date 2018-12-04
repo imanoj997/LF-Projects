@@ -2,7 +2,7 @@
     overflow: hidden;
     position: relative;
     margin: 0 auto;
-    background: url("../images/bg.png");
+    background: url("../images/background.png");
     border: 3px solid red;
 }
 
