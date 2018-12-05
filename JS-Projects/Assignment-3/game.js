@@ -21,6 +21,7 @@ var keyPress = false;
 var poleHeight;
 var timeCount = 0;
 var start = false;
+//upload
 
 wrapper.style.width = wrapperWidth + 'px';
 wrapper.style.height = wrapperHeight + 'px';

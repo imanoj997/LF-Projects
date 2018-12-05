@@ -20,6 +20,7 @@ container.appendChild(ball);
 
 ball.style.position = 'absolute';
 ball.style.left = 'calc(50% - ' + ballProps.width / 2 + 'px)';
+//upload
 
 var speed = 1;
 var delta = 1;

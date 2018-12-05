@@ -11,6 +11,7 @@ const BALL_CONSTRAINT_X = CONTAINER_WIDTH - (ballMaxSize);
 const BALL_CONSTRAINT_Y = CONTAINER_HEIGHT - (ballMaxSize);
 
 function getRandomInt(min, max) {
+	//edit
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;

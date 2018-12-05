@@ -9,6 +9,7 @@ ul = document.getElementById('image_slider');
 
 var prev = document.getElementById("prev");
 var next = document.getElementById("next");
+//edit
 
 init();
 
