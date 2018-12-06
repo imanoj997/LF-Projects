@@ -1,65 +1,72 @@
-var ul;
-var liItems;
 var imageWidth;
 var imageNumber;
 var currentImage = 0;
+var imageList;
 var btnClicked = false;
+var prevImage;
+var automate;
 
-ul = document.getElementById('image_slider');
 
-var prev = document.getElementById("prev");
-var next = document.getElementById("next");
-//edit
+var sliderDiv = document.getElementById('image-slider');
 
-init();
+function Slider() {
+    imageList = sliderDiv.children;
+    imageNumber = imageList.length;
+    imageWidth = imageList[0].children[0].clientWidth;
+    sliderDiv.style.width = parseInt(imageWidth * imageNumber) + 'px';
 
-function init() {
-
-    liItems = ul.children;
-    imageNumber = liItems.length;
-    imageWidth = liItems[0].children[0].clientWidth;
-    ul.style.width = parseInt(imageWidth * imageNumber) + 'px';
-    //slider(ul);
     prev.onclick = function() {
         onClickPrev();
-        //clearInterval(id);
-        var btnClicked = true;
-        //slider = new slider();
+        //btnClicked = true;
+        setTimeout(function() {
+            setInterval(automate, 3000);
+        }, 1500);
     };
     next.onclick = function() {
         onClickNext();
-        var btnClicked = true;
-        //slider = new slider();
-    };;
-    setInterval(function (){
+        //btnClicked = true;
+        setTimeout(function() {
+            setInterval(automate, 3000);;
+        }, 1500);
+    };
 
-        if(btnClicked == false){
+    var automate = setInterval(function() {
+        if (btnClicked == false) {
             if (currentImage == 0) {
-            slideTo(currentImage + 1);
-            } else if(currentImage == imageNumber-1){
-            slideTo(currentImage -(imageNumber-1));
-            }else{
-                slideTo(currentImage + 1)
+                prevImage = currentImage;
+                slideTo(currentImage + 1);
+
+            } else if (currentImage == imageNumber - 1) {
+                prevImage = currentImage;
+                slideTo(currentImage - 1);
+            } else {
+                if (currentImage > prevImage) {
+                    prevImage = currentImage;
+                    slideTo(currentImage + 1)
+                } else {
+                    prevImage = currentImage;
+                    slideTo(currentImage - 1);
+                }
             }
-        }else{
+        } else {
             return;
         }
     }, 3000);
 }
 
-function slideTo(imageToGo) {
 
-    var direction;
+function slideTo(imageToGo) {
+    highlightCurrentImage();
     var numOfImageToGo = Math.abs(imageToGo - currentImage);
-    direction = currentImage > imageToGo ? 1 : -1;
     currentPosition = -1 * currentImage * imageWidth;
+    direction = currentImage > imageToGo ? 1 : -1;
     var opts = {
         duration: 1000,
         delta: function delta(p) {
             return p;
         },
         step: function step(delta) {
-            ul.style.left = parseInt(currentPosition + direction * delta * imageWidth * numOfImageToGo) + 'px';
+            sliderDiv.style.left = parseInt(currentPosition + direction * delta * imageWidth * numOfImageToGo) + 'px';
         },
         callback: function callback() {
             currentImage = imageToGo;
@@ -67,18 +74,6 @@ function slideTo(imageToGo) {
     };
     animate(opts);
 }
-
-// function goBack(leftPosition) {
-//     currentImage = 0;
-//     var id = setInterval(function() {
-//         if (leftPosition >= 0) {
-//             ul.style.left = '-' + parseInt(leftPosition) + 'px';
-//             leftPosition -= imageWidth / 10;
-//         } else {
-//             clearInterval(animate.id);
-//         }
-//     }, 17);
-// }
 
 function animate(opts) {
     var start = new Date();
@@ -98,9 +93,8 @@ function animate(opts) {
 }
 
 function onClickPrev() {
-    //slide = null;
     if (currentImage == 0) {
-        btnClicked=false;
+        btnClicked = false;
         return;
     } else {
         slideTo(currentImage - 1);
@@ -109,7 +103,6 @@ function onClickPrev() {
 }
 
 function onClickNext() {
-    //slide = null;
     if (currentImage == imageNumber - 1) {
         btnClicked = false;
         return;
@@ -117,30 +110,29 @@ function onClickNext() {
         btnClicked = false;
         slideTo(currentImage + 1);
     }
+
 }
 
-// function slider(ul) {
-//     animate({
-//         duration: 3000,
-//         delta: function delta(p) {
-//             return Math.max(0, -1 + 2 * p);
-//         },
-//         step: function step(delta) {
-//             ul.style.left = '-' + parseInt(currentImage * imageWidth + delta * imageWidth) + 'px';
-//         },
-//         callback: function callback() {
-//             currentImage++;
-//             if (currentImage < imageNumber - 1) {
-//                 slider(ul);
-//             } else {
-//                 var leftPosition = (imageNumber - 1) * imageWidth;
-//                 setTimeout(function() {
-//                     goBack(leftPosition);
-//                 }, 3000);
-//                 setTimeout(function() {
-//                     slider(ul);
-//                 }, 3000);
-//             }
-//         }
-//     });
-// }
+function highlightCurrentImage() {
+    var dotList = [];
+    var dot1 = document.getElementById('dot1');
+    dotList.push(dot1);
+    var dot2 = document.getElementById('dot2');
+    dotList.push(dot2);
+    var dot3 = document.getElementById('dot3');
+    dotList.push(dot3);
+    var dot4 = document.getElementById('dot4');
+    dotList.push(dot4);
+    var dot5 = document.getElementById('dot5');
+    dotList.push(dot5);
+
+    for (let i = 0; i < dotList.length; i++) {
+        if (currentImage == i) {
+            dotList[i].style.opacity = 1;
+        } else {
+            dotList[i].style.opacity = 0.5;
+        }
+    }
+}
+
+window.onload = new Slider();
