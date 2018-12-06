@@ -112,6 +112,7 @@ function onClickNext() {
     }
 
 }
+//comment
 
 function highlightCurrentImage() {
     var dotList = [];
