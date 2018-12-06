@@ -1,0 +1,143 @@
+a.anchor-style{
+    text-decoration: none;
+    color: black;
+
+}
+
+.user-name {
+    font-size: 16px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.user-name:hover{
+    color: white;
+}
+
+.menu-list {
+    font-size: 11px;
+    color: black;
+    display: inline;
+    padding-left: 2px;
+    padding-right: 5px;
+    background: url("../images/pipe.png") no-repeat;
+    background-position: right;
+}
+
+menu-list.last-child{
+    background: none;
+}
+
+.list-text{
+    font-size: 12px;
+    font-weight: 600;
+    width: 140px;
+}
+
+.recent-searches ul li:hover{
+    background-color: white;
+    cursor: pointer;
+}
+
+.recent-nav ul li:hover{
+    background-color: white;
+    cursor: pointer;
+}
+
+.nav-bar ul li:hover{
+    color:#2fc1da;
+    background-color: white;
+    cursor: pointer;
+    padding-bottom: 12px;
+    padding-top: 13px;
+}
+
+
+.menu-list ul li:hover{
+    color:red;
+}
+
+.menu-list.last-child{
+    background: none;
+    padding-right: 0px;
+}
+
+.left-tab ul li:hover{
+    color: beige;
+}
+
+.right-tab ul li:hover{
+    color: beige;
+}
+
+h2{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+/* middle section for news and tabs */
+
+.description a {
+    color: #6fc9dc;
+}
+
+.notice{
+    font-size: 10px;
+    font-weight: bold;
+    color: #4fb0c3;
+    padding-bottom: 2px; 
+}
+
+.content {
+    font-size: 11px;
+    color: #616161;
+    padding-bottom: 2px;
+}
+
+
+.content-header a {
+    color: #000;
+}
+
+.author-name {
+    color: #4fb0c3;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+a.subscribed{
+    color: #70961d;
+    font-weight: bold;
+}
+
+.notice.last-child{
+    color: red;
+}
+
+.entries{
+    line-height: 21px;
+}
+
+.tab-div{
+    background-image: url("../images/tab-top.png");
+    background-repeat:no-repeat;
+    background-position: center;
+    line-height: 67px;
+}
+
+
+.footer-list{
+	list-style-type: none;
+	display: inline;
+	font-size: 11px;
+	color: white;
+    background: url(../images/footer-dot.png) no-repeat;
+    background-position: right;
+    padding-right: 11px;
+    margin-right: 3px;
+}
+
+.footer-list.last-child{
+    background: none;
+}
