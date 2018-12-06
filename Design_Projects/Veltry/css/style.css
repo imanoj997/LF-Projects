@@ -1,0 +1,8 @@
+.container{
+  background-color: white;
+}
+
+.search-and-cart ul li{
+  list-style-type: none;
+  display: inline;
+}

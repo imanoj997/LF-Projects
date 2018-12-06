@@ -1,0 +1,78 @@
+.container{
+  width: 100%;
+}
+
+/* "container" All header wrapper including best travel text */
+.header-wrapper{
+  width: 100%;
+  position: relative;
+
+}
+
+/* "header-wrapper" */
+.bg-mountain{
+  width: 100%;
+}
+
+/* "header-wrapper" Set this 100% */
+.title-and-search{
+  width: 100%;
+  top: 23px;
+  left: 0px;
+  position: absolute;
+}
+
+.title{
+  width: 83.59375%;
+}
+
+.title-image{
+  width: 22.679127%;
+  margin-left: 676px;
+}
+
+.search-and-cart{
+  width: 16.40625%;
+}
+
+.search-and-cart ul li{
+  padding-right: 60px;
+}
+
+
+/*"header-wrapper" upper part of header includes title, tabs and 'for a trip' text */
+.header-and-mountains{
+  width: 76.302083%;
+}
+
+
+
+/* .header-and-mountains */
+.nav-and-trip{
+  
+}
+
+/* "header-wrapper" widthh= 1920 px */
+.best-travel-container{
+
+}
+
+
+/* "best-travel-container" width== 1465px */
+.best-travel-wrapper{
+
+}
+
+
+/* "best-travel-wrapper" */
+.best-travel-div{
+
+}
+
+.float-left{
+  float: left;
+}
+
+.float-right{
+  float: right;
+}
