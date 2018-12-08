@@ -4,8 +4,8 @@ var directionArray = [-1, 1];
 var balls = [];
 const speed = 12;
 
-const CONTAINER_WIDTH = 700;
-const CONTAINER_HEIGHT = 500;
+const CONTAINER_WIDTH = 1000;
+const CONTAINER_HEIGHT = 600;
 
 const BALL_CONSTRAINT_X = CONTAINER_WIDTH - (ballMaxSize);
 const BALL_CONSTRAINT_Y = CONTAINER_HEIGHT - (ballMaxSize);

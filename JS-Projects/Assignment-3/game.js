@@ -10,7 +10,8 @@ wrapper.style.background = "url('images/background.png') no-repeat";
 wrapper.appendChild(scoreCard);
 
 var wrapperWidth = 1000;
-var wrapperHeight = 560;
+var wrapperHeight = 556;
+
 
 var verticalGap;
 var horizentalGap;
@@ -21,7 +22,6 @@ var keyPress = false;
 var poleHeight;
 var timeCount = 0;
 var start = false;
-//upload
 
 wrapper.style.width = wrapperWidth + 'px';
 wrapper.style.height = wrapperHeight + 'px';
@@ -34,7 +34,7 @@ function Bird() {
     this.width = 30;
     var bird = document.createElement('div');
 
-    this.draw = function() {
+    this.draw = function () {
 
         bird.style.width = this.width + 'px';
         bird.style.height = this.height + 'px';
@@ -47,18 +47,18 @@ function Bird() {
         wrapper.appendChild(bird);
     }
 
-    this.move = function() {
+    this.move = function () {
 
         bird.style.top = this.y + 'px';
 
     }
 
-    this.birdUpDown = function(gravity) {
+    this.birdUpDown = function (gravity) {
 
         this.y += gravity;
     }
 
-    this.checkCollision = function(poleList) {
+    this.checkCollision = function (poleList) {
 
         for (var i = 0; i < poleList.length; i++) {
 
@@ -102,7 +102,7 @@ function Pole(height, upperpole) {
 
     var pole = document.createElement('div');
 
-    this.draw = function() {
+    this.draw = function () {
 
         pole.style.width = this.width + 'px';
         pole.style.height = this.height + 'px';
@@ -124,12 +124,12 @@ function Pole(height, upperpole) {
         wrapper.appendChild(pole);
     }
 
-    this.move = function() {
+    this.move = function () {
         pole.style.left = this.startPoint + 'px';
         this.startPoint -= 1;
     }
 
-    this.getElement = function() {
+    this.getElement = function () {
         return pole;
     }
 }
@@ -138,18 +138,18 @@ function Pole(height, upperpole) {
 function poleList() {
     this.poleArray = [];
 
-    this.add = function(pole) {
+    this.add = function (pole) {
         this.poleArray.push(pole);
     }
 
-    this.remove = function() {
+    this.remove = function () {
         for (var i = 0; i < 2; i++) {
             wrapper.removeChild(this.poleArray[0].getElement());
             this.poleArray.splice(0, 1);
         }
     }
 
-    this.getAll = function() {
+    this.getAll = function () {
         return this.poleArray;
     }
 }
@@ -164,7 +164,7 @@ function Game() {
 
     var pole = new Pole();
 
-    var init = setInterval(function() {
+    var init = setInterval(function () {
 
         var collision = bird.checkCollision(poleArray.getAll());
         if (collision) {
@@ -177,6 +177,9 @@ function Game() {
             var gameOverAudio = document.getElementById('gameoveraudio');
             gameOverAudio.play();
             clearInterval(init);
+            document.addEventListener('keydown', function () {
+                window.location.reload()
+            });
         } else {
 
             bird.move();
@@ -224,11 +227,11 @@ function Game() {
             }
 
 
-            document.addEventListener('keydown', function() {
+            document.addEventListener('keydown', function () {
                 keyPress = true;
             });
 
-            document.addEventListener('keyup', function() {
+            document.addEventListener('keyup', function () {
                 keyPress = false;
             });
 
@@ -259,9 +262,13 @@ function gameOver() {
     var highscoreBoard = document.createElement('h2');
     highscoreBoard.textContent = "High Score: " + localStorage.getItem('highScore');
 
+    var pressKey = document.createElement('h2');
+    pressKey.textContent = "Press any key to re-start";
+
     gameOver.appendChild(Heading);
     gameOver.appendChild(scoreBoard);
     gameOver.appendChild(highscoreBoard);
+    gameOver.appendChild(pressKey);
 
     wrapper.appendChild(gameOver);
 }
@@ -278,20 +285,27 @@ function welcomeScreen() {
     var highscoreBoard = document.createElement('h2');
     highscoreBoard.textContent = "High Score: " + localStorage.getItem('highScore');
 
+    var pressKey = document.createElement('h2');
+    pressKey.textContent = "Press any key to Start";
+
     welcome.appendChild(welcomeText);
     welcome.appendChild(gameName);
     welcome.appendChild(highscoreBoard);
+    welcome.appendChild(pressKey);
 
     wrapper.appendChild(welcome);
 }
 
 function startGame() {
     welcomeScreen();
-    setTimeout(function() {
+    var eventHandler = function () {
         welcome.style.display = 'none';
         Game();
-    }, 1000);
-
+        document.removeEventListener('keydown', eventHandler)
+    }
+    setTimeout(function () {
+        document.addEventListener('keydown', eventHandler);
+    }, 1);
 }
 
 window.onload = startGame();
