@@ -1,5 +1,97 @@
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
+
   /* "header-wrapper" Set this 100% */
+  .title-and-search{
+    width: 100%;
+    top: 13px;
+    left: 0px;
+    position: absolute;
+  }
+  
+  .title{
+    width: 70%;
+  }
+  
+  .title-image{
+    width: 30%;
+    margin-left: 310px;
+  }
+  
+  .search-and-cart{
+    width: 30%;
+    padding-top: 7px;
+    padding-left: 95px;
+  }
+  
+  .search-and-cart img{
+    padding-right: 10px;
+    width: 25%;
+  }
+  
+  /*"header-wrapper" upper part of header includes title, tabs and 'for a trip' text */
+  .header-and-mountains{
+    top: 77px;
+    left: 127px;
+    padding-top: 19px; 
+  }
+
+  .nav-bar ul li a{
+    padding: 0px 28px;
+    text-decoration: none;
+    text-decoration-color: black;
+  }
+
+  /* "nav-and-trip" */
+  .find-need{
+   display: block;
+   top: 73px;
+   left: 193px;
+   position: absolute;
+  }
+
+  /* "nav-and-trip" */
+  .for-a-trip{
+    display: block;
+    top: 87px;
+   left: 112px;
+   position: absolute;
+  }
+
+  .nav-bar ul li{
+    list-style-type: none;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 11px;
+    display: inline;
+    font-weight: 309px;
+    letter-spacing: 1px;
+    
+  }
+  
+  /* "nav-and-trip" */
+  .find-need{
+    font-size: 19px;
+    font-family: 'quotusthin';
+    text-shadow: 1px 0 black;
+    letter-spacing:1px;
+    font-weight:bold;
+  }
+  
+  /* "nav-and-trip" */
+  .for-a-trip{
+    font-size: 87px;
+    font-family: 'quotusbold';
+    letter-spacing: 3px;
+    color: white;
+  }
+  
+
+
+}
+
+
+
+@media only screen and (max-width: 480px) {
+/* "header-wrapper" Set this 100% */
 .title-and-search{
   width: 100%;
   top: 13px;
@@ -7,14 +99,31 @@
   position: absolute;
 }
 
-.title-image{
-  width: 22.679127%;
-  margin-left: 380px;
+.title{
+  width: 83%;
 }
 
-.search-and-cart ul li{
-  list-style-type: none;
-  display: inline;
-  padding-right: 33px;
+.title-image{
+  width: 30%;
+  margin-left: 20px;
 }
+
+.search-and-cart{
+  width: 17%;
+  padding-top: 4px;
+}
+
+.search-and-cart img{
+  padding-right: 20px;
+  width: 47%;
+}
+
+/*"header-wrapper" upper part of header includes title, tabs and 'for a trip' text */
+.header-and-mountains{
+  width: 76.302083%;
+  margin: 0px auto;
+  background-color: blue;
+}
+
+
 }

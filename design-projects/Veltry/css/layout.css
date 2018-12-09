@@ -23,51 +23,118 @@
 }
 
 .title{
-  width: 83.59375%;
+  width: 85%;
 }
 
 .title-image{
   width: 22.679127%;
-  margin-left: 676px;
+  margin-left: 678px;
 }
 
 .search-and-cart{
-  width: 16.40625%;
+  width: 15%;
+  padding-top: 20px;
 }
 
-.search-and-cart ul li{
-  padding-right: 60px;
+.search-and-cart img{
+  width: 30%;
+  padding-right: 40px;
 }
-
 
 /*"header-wrapper" upper part of header includes title, tabs and 'for a trip' text */
 .header-and-mountains{
   width: 76.302083%;
+  margin: 0px auto;
+  top: 137px;
+  left: 227px;
+  position: absolute;
+  padding-top: 34px; 
 }
-
-
 
 /* .header-and-mountains */
 .nav-and-trip{
   
 }
 
+
+/* "nav-and-trip" */
+.nav-bar{
+  width: 67.235%;
+  margin: 0px auto;
+}
+
+.nav-bar ul li a{
+  padding: 0px 50px;
+  text-decoration: none;
+  text-decoration-color: black;
+}
+
+
+/* "nav-and-trip" */
+.find-need{
+  display: block;
+  top: 130px;
+  left: 345px;
+  position: absolute;
+}
+
+/* "nav-and-trip" */
+.for-a-trip{
+  display: block;
+  top: 155px;
+  left: 200px;
+  position: absolute;
+}
+
+.mountain1{
+  top: 261px;
+  left: 160px;
+  position: absolute;
+}
+
+.mountain2{
+  top: 135px;
+  left: 700px;
+  position: absolute;
+}
+
+
 /* "header-wrapper" widthh= 1920 px */
-.best-travel-container{
-
-}
-
-
-/* "best-travel-container" width== 1465px */
 .best-travel-wrapper{
+  width: 76.302083%;
+  margin: 0px auto;
+  top: 905px;
+  left: 227px;
+  position: absolute;
+}
 
+.best-travel{
+  padding-bottom: 20px;
+}
+
+.accessories{
+  padding-bottom: 40px;
+}
+
+.plain-text{
+  padding-bottom: 15px;
+}
+
+.viewall-btn{
+  padding-top: 40px;
 }
 
 
-/* "best-travel-wrapper" */
-.best-travel-div{
-
+.viewall-btn button{
+  width: 304px;
+  line-height: 85px;
 }
+
+.best-travel-div span{
+display: block;
+}
+
+
 
 .float-left{
   float: left;

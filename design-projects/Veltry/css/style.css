@@ -1,8 +1,97 @@
+*{
+  box-sizing: border-box;
+}
+
 .container{
   background-color: white;
 }
+
 
 .search-and-cart ul li{
   list-style-type: none;
   display: inline;
 }
+
+.nav-bar ul li{
+  list-style-type: none;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 20px;
+  display: inline;
+  font-weight: 550;
+  letter-spacing: 2px;
+  
+}
+
+/* "nav-and-trip" */
+.find-need{
+  font-size: 35px;
+  font-family: 'quotusthin';
+  text-shadow: 1px 0 black;
+  letter-spacing:1px;
+  font-weight:bold;
+}
+
+/* "nav-and-trip" */
+.for-a-trip{
+  font-size: 155px;
+  font-family: 'quotusbold';
+  letter-spacing: 5px;
+  color: white;
+}
+
+.best-travel{
+  font-size: 55px;
+  font-family: 'quotusbold';
+  color: black;
+}
+
+.accessories{
+  font-size: 60px;
+  font-family: 'quotusthin';
+  text-shadow: 1px 0 black;
+  letter-spacing:2px;
+}
+
+.plain-text{
+  font-size: 19px;
+  font-family: 'Roboto Light'
+}
+
+
+.viewall-btn button{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  background: url("../images/viewallBtn.png");
+  font-size: 30px;
+  font-family: 'Roboto Bold';
+  letter-spacing: 2px;
+  color: white;
+  font-weight: bold;
+}
+
+
+@font-face {
+  font-family: 'quotusbold';
+  src: url('./fonts/quotus-bold-webfont.woff2') format('woff2'),
+       url('./fonts/quotus-bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'quotusthin';
+  src: url('./fonts/quotus-thin-webfont.woff2') format('woff2'),
+       url('./fonts/quotus-thin-webfont.woff') format('woff');
+  font-weight: bolder;
+  font-style: normal;
+
+}
+
+
+
+
