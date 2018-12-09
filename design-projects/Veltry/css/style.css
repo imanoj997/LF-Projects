@@ -24,18 +24,17 @@
 
 /* "nav-and-trip" */
 .find-need{
-  font-size: 35px;
+  font-size: 27px;
   font-family: 'quotusthin';
-  text-shadow: 1px 0 black;
-  letter-spacing:1px;
+  letter-spacing:4px;
   font-weight:bold;
 }
 
 /* "nav-and-trip" */
 .for-a-trip{
-  font-size: 155px;
+  font-size: 120px;
   font-family: 'quotusbold';
-  letter-spacing: 5px;
+  letter-spacing: 6px;
   color: white;
 }
 
@@ -49,12 +48,13 @@
   font-size: 60px;
   font-family: 'quotusthin';
   text-shadow: 1px 0 black;
-  letter-spacing:2px;
+  letter-spacing:-1 px;
 }
 
 .plain-text{
   font-size: 19px;
-  font-family: 'Roboto Light'
+  font-family: 'Roboto', sans-serif;
+  word-wrap: break-word;
 }
 
 
@@ -66,19 +66,69 @@
   overflow: hidden;
   outline:none;
   background: url("../images/viewallBtn.png");
-  font-size: 30px;
-  font-family: 'Roboto Bold';
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
   color: white;
   font-weight: bold;
 }
 
 
+
+/* "description1" */
+.description1-title{
+  display: block;
+  font-family: 'quotusthin';
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+}
+
+/* "description1" */
+.description1-text{
+  display: block;
+  font-size: 21px;
+  text-align: center;
+}
+
+/* "description1" */
+.description1-subtitle{
+  display: block;
+  font-size: 25px;
+  color: #6fdae0;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+/* CSS for luggage grid */
+
+/* "bag-grid" */
+.bag-grid p{
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+
+.upper-list{
+ list-style-type: none;
+ display: inline;
+}
+
+.inner-list{
+  list-style-type: none;
+}
+
+
+.price-cart-combo{
+  font-weight: 900;
+  font-size: 16px;
+ }
+
 @font-face {
   font-family: 'quotusbold';
   src: url('./fonts/quotus-bold-webfont.woff2') format('woff2'),
        url('./fonts/quotus-bold-webfont.woff') format('woff');
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -87,7 +137,7 @@
   font-family: 'quotusthin';
   src: url('./fonts/quotus-thin-webfont.woff2') format('woff2'),
        url('./fonts/quotus-thin-webfont.woff') format('woff');
-  font-weight: bolder;
+  font-weight: normal;
   font-style: normal;
 
 }

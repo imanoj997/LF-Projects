@@ -17,28 +17,28 @@
 /* "header-wrapper" Set this 100% */
 .title-and-search{
   width: 100%;
-  top: 23px;
+  top: 17px;
   left: 0px;
   position: absolute;
 }
 
 .title{
-  width: 85%;
+  width: 83%;
 }
 
 .title-image{
   width: 22.679127%;
-  margin-left: 678px;
+  margin-left: 550px;
 }
 
 .search-and-cart{
-  width: 15%;
-  padding-top: 20px;
+  width: 17%;
+  padding-top: 15px;
 }
 
 .search-and-cart img{
   width: 30%;
-  padding-right: 40px;
+  padding-right: 38px;
 }
 
 /*"header-wrapper" upper part of header includes title, tabs and 'for a trip' text */
@@ -46,9 +46,9 @@
   width: 76.302083%;
   margin: 0px auto;
   top: 137px;
-  left: 227px;
+  left: 161px;
   position: absolute;
-  padding-top: 34px; 
+  padding-top: 10px; 
 }
 
 /* .header-and-mountains */
@@ -59,12 +59,12 @@
 
 /* "nav-and-trip" */
 .nav-bar{
-  width: 67.235%;
+  width: 75%;
   margin: 0px auto;
 }
 
 .nav-bar ul li a{
-  padding: 0px 50px;
+  padding: 0px 35px;
   text-decoration: none;
   text-decoration-color: black;
 }
@@ -73,28 +73,28 @@
 /* "nav-and-trip" */
 .find-need{
   display: block;
-  top: 130px;
-  left: 345px;
+  top: 74px;
+  left: 280px;
   position: absolute;
 }
 
 /* "nav-and-trip" */
 .for-a-trip{
   display: block;
-  top: 155px;
-  left: 200px;
+  top: 100px;
+  left: 162px;
   position: absolute;
 }
 
 .mountain1{
-  top: 261px;
-  left: 160px;
+  top: 185px;
+  left: 117px;
   position: absolute;
 }
 
 .mountain2{
-  top: 135px;
-  left: 700px;
+  top: 100px;
+  left: 587px;
   position: absolute;
 }
 
@@ -103,38 +103,137 @@
 .best-travel-wrapper{
   width: 76.302083%;
   margin: 0px auto;
-  top: 905px;
-  left: 227px;
+  top: 726px;
+  left: 164px;
   position: absolute;
 }
 
+.best-travel-div{
+  width: 50%;
+}
+
+/* "best-travel-wrapper" */
 .best-travel{
-  padding-bottom: 20px;
+  padding-bottom: 18px;
 }
 
+/* "best-travel-wrapper" */
 .accessories{
-  padding-bottom: 40px;
+  padding-bottom: 33px;
 }
 
+/* "best-travel-wrapper" */
 .plain-text{
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 
+/* "best-travel-wrapper" */
 .viewall-btn{
   padding-top: 40px;
 }
 
-
+/* "viewall-btn" */
 .viewall-btn button{
-  width: 304px;
-  line-height: 85px;
+  width: 42%;
+  line-height: 63px;
 }
 
+/* "best-travel-div" */
 .best-travel-div span{
 display: block;
 }
 
 
+/* ".header-wrapper" */
+.backpackers{
+  top: 170px;
+  left: 790px;
+  position: absolute;
+}
+
+/* CSS for body */
+
+/* "container" */
+.body-wrapper{
+  width: 76.302083%;
+  margin: 0px auto;
+  top: 985px;
+  left: 165px;
+  position: absolute;
+  margin-top: 204px;
+}
+
+
+/* "body-wrapper" */
+.new-arrivals-div{
+  width: 100%;
+  margin: 0px auto;
+}
+
+/* "new-arrivals" */
+.description1{
+  width: 56.58%;
+  margin: 0px auto;
+  padding-bottom: 33px;
+}
+
+/* "description1" */
+.description1-title{
+  width: 63.93%;
+  margin: 0px auto;
+  padding-bottom: 22px;
+}
+
+/* "description1" */
+.description1-text{
+  width: 100%;
+  margin: 0px auto;
+  padding-bottom: 39px;
+}
+
+/* "description1" */
+.description1-subtitle{
+  width: 59.65%;
+  margin: 0px auto;
+}
+
+/* CSS for luggage grid */
+
+/* "bag-grid" */
+.bag-grid{
+  width: 100%;
+}
+
+.bag-div-upper{
+  width: 98.29%;
+  margin: 0px auto;
+}
+
+.inner-list li{
+  padding-bottom: 10px;
+}
+
+.inner-list li p{
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.corner-bag{
+  width: 27.5%
+}
+
+.middle-bag{
+  width: 45%;
+}
+
+.price-cart-combo{
+  width: 50%;
+  margin: 0px auto;
+ }
+
+ .price-cart-combo span img{
+  padding-left: 4px;
+ }
 
 .float-left{
   float: left;
