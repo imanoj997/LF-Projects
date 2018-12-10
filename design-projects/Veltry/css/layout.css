@@ -207,33 +207,121 @@ display: block;
 .bag-div-upper{
   width: 98.29%;
   margin: 0px auto;
+  padding-bottom: 75px;
 }
 
-.inner-list li{
-  padding-bottom: 10px;
+.upper-list, .lower-list{
+  width: 100%;
 }
 
-.inner-list li p{
-  font-weight: 600;
-  font-size: 12px;
+.inner-list{
+  width: 100%;
 }
 
-.corner-bag{
-  width: 27.5%
+.corner-bag1{
+  width: 17%;
+  padding-left: 20px;
+}
+
+
+.corner-bag2{
+  width: 22%;
 }
 
 .middle-bag{
-  width: 45%;
+  width: 61%;
 }
 
-.price-cart-combo{
-  width: 50%;
-  margin: 0px auto;
- }
+.corner-bag1-lower{
+  width: 20%;
+}
 
- .price-cart-combo span img{
-  padding-left: 4px;
- }
+.middle-bag-lower{
+  width: 36%;
+  padding-left: 165px;
+}
+
+.corner-bag2-lower{
+  width: 44%;
+  padding-left: 145px;
+}
+
+.description-wrapper1{
+  width: 100%;
+  padding-left: 8px;
+  padding-top: 20px;
+}
+
+.description-wrapper1-middle{
+  width: 36%;
+  padding-left: 8px;
+  margin: 0px auto;
+  padding-top: 20px;
+}
+
+.description-wrapper2{
+  width: 86%;
+  padding-left: 31px;
+  padding-top: 20px;
+}
+
+.description-wrapper2-middle{
+  width: 107%;
+  padding-left: 8px;
+  margin: 0px auto;
+  padding-top: 20px;
+}
+
+.price-and-cart-wrapper1{
+  width: 56%;
+  padding-left: 8px;
+  margin: 0px auto;
+}
+
+.price-and-cart-wrapper1 span img{
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+.price-and-cart-wrapper1-middle span img{
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+.price-and-cart-wrapper1-middle{
+  width: 20%;
+  padding-left: 8px;
+  margin: 0px auto;
+}
+
+.price-and-cart-wrapper2{
+  width: 50%;
+  padding-left: 25px;
+  margin: 0px auto;
+}
+
+.price-and-cart-wrapper2 span img{
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+.price-and-cart-wrapper2-middle span img{
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+.price-and-cart-wrapper2-middle{
+  width: 43%;
+  padding-left: 8px;
+  margin: 0px auto;
+}
+
+
+.bag-div-lower{
+  width: 98.29%;
+  margin: 0px auto;
+  padding-bottom: 75px;
+}
 
 .float-left{
   float: left;
@@ -242,3 +330,4 @@ display: block;
 .float-right{
   float: right;
 }
+
