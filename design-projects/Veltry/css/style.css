@@ -1,71 +1,68 @@
-*{
+* {
   box-sizing: border-box;
 }
 
-.container{
+.container {
   background-color: white;
 }
 
-
-.search-and-cart ul li{
+.search-and-cart ul li {
   list-style-type: none;
   display: inline;
 }
 
-.nav-bar ul li{
+.nav-bar ul li {
   list-style-type: none;
-  font-family: "Lucida Console", Monaco, monospace;
+  font-family: 'Lucida Console', Monaco, monospace;
   font-size: 20px;
   display: inline;
   font-weight: 550;
   letter-spacing: 2px;
-  
 }
 
 /* "nav-and-trip" */
-.find-need{
+.find-need {
   font-size: 27px;
   font-family: 'quotusthin';
-  letter-spacing:4px;
-  font-weight:bold;
+  letter-spacing: 4px;
+  font-weight: bold;
 }
 
 /* "nav-and-trip" */
-.for-a-trip{
+.for-a-trip {
   font-size: 120px;
   font-family: 'quotusbold';
   letter-spacing: 6px;
   color: white;
 }
 
-.best-travel{
+.best-travel {
   font-size: 55px;
   font-family: 'quotusbold';
   color: black;
 }
 
-.accessories{
+.accessories {
   font-size: 60px;
   font-family: 'quotusthin';
   text-shadow: 1px 0 black;
-  letter-spacing:-1 px;
+  letter-spacing: -1 px;
 }
 
-.plain-text{
+.plain-text {
   font-size: 19px;
   font-family: 'Roboto', sans-serif;
   word-wrap: break-word;
 }
 
-
-.viewall-btn button{
+.viewall-btn button {
   background-color: Transparent;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   border: none;
-  cursor:pointer;
+  cursor: pointer;
   overflow: hidden;
-  outline:none;
-  background: url("../images/viewallBtn.png");
+  outline: none;
+  background: url('../images/viewallBtn.png');
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
@@ -73,10 +70,8 @@
   font-weight: bold;
 }
 
-
-
 /* "description1" */
-.description1-title{
+.description1-title {
   display: block;
   font-family: 'quotusthin';
   font-weight: bold;
@@ -85,14 +80,14 @@
 }
 
 /* "description1" */
-.description1-text{
+.description1-text {
   display: block;
   font-size: 21px;
   text-align: center;
 }
 
 /* "description1" */
-.description1-subtitle{
+.description1-subtitle {
   display: block;
   font-size: 25px;
   color: #6fdae0;
@@ -102,55 +97,57 @@
 
 /* CSS for luggage grid */
 
-
-.bag-div-upper ul li{
- list-style-type: none;
- display: inline;
-}
-
-.inner-list{
+.bag-div-upper ul li {
   list-style-type: none;
-}
-
-.description-and-price p{
   display: inline;
 }
 
-.description-wrapper1, .description-wrapper1-middle, .description-wrapper2, .description-wrapper2-middle{
+.inner-list {
+  list-style-type: none;
+}
+
+.description-and-price p {
+  display: inline;
+}
+
+.description-wrapper1,
+.description-wrapper1-middle,
+.description-wrapper2,
+.description-wrapper2-middle {
   font-weight: 600;
   font-size: 12px;
   text-align: center;
 }
 
-.price-and-cart-wrapper1, .price-and-cart-wrapper1-middle, .price-and-cart-wrapper2, .price-and-cart-wrapper2-middle{
+.price-and-cart-wrapper1,
+.price-and-cart-wrapper1-middle,
+.price-and-cart-wrapper2,
+.price-and-cart-wrapper2-middle {
   font-weight: 600;
   font-size: 16px;
 }
 
-.bag-div-lower ul li{
+.bag-div-lower ul li {
   list-style-type: none;
   display: inline;
- }
+}
 
+.bottom-container {
+  background: url(../images/bottom-bg.png);
+}
 
 @font-face {
   font-family: 'quotusbold';
   src: url('./fonts/quotus-bold-webfont.woff2') format('woff2'),
-       url('./fonts/quotus-bold-webfont.woff') format('woff');
+    url('./fonts/quotus-bold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
 
 @font-face {
   font-family: 'quotusthin';
   src: url('./fonts/quotus-thin-webfont.woff2') format('woff2'),
-       url('./fonts/quotus-thin-webfont.woff') format('woff');
+    url('./fonts/quotus-thin-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
-
-
-
-
