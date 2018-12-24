@@ -132,10 +132,6 @@
   display: inline;
 }
 
-.bottom-container {
-  background: url(../images/bottom-bg.png);
-}
-
 @font-face {
   font-family: 'quotusbold';
   src: url('./fonts/quotus-bold-webfont.woff2') format('woff2'),
